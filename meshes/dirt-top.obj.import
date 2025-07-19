@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://t0il1fa05wfm"
+path="res://.godot/imported/dirt-top.obj-65c752b9d60465a0766d23675d18b33a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/dirt-top.obj-65c752b9d60465a0766d23675d18b33a.mesh"]
+
+source_file="res://meshes/dirt-top.obj"
+dest_files=["res://.godot/imported/dirt-top.obj-65c752b9d60465a0766d23675d18b33a.mesh", "res://.godot/imported/dirt-top.obj-65c752b9d60465a0766d23675d18b33a.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
