@@ -1,13 +1,22 @@
-[gd_scene load_steps=38 format=4 uid="uid://ddiqosvgbpjvt"]
+[gd_scene load_steps=50 format=4 uid="uid://ddiqosvgbpjvt"]
 
 [ext_resource type="ArrayMesh" uid="uid://d14ek14xbw7jk" path="res://meshes/barrier.obj" id="1_15o8h"]
+[ext_resource type="PackedScene" uid="uid://c42iu2iy4angw" path="res://meshes/bush.gltf" id="10_amhoc"]
 [ext_resource type="Texture2D" uid="uid://cjkuvnuunpvhq" path="res://meshes/dirt_0.png" id="10_djd0b"]
+[ext_resource type="PackedScene" uid="uid://cvx0gd6iussga" path="res://meshes/dirt-rock.gltf" id="11_72vyu"]
 [ext_resource type="Texture2D" uid="uid://dextjgt0wsegj" path="res://meshes/dirt.png" id="11_xrfj6"]
+[ext_resource type="PackedScene" uid="uid://chs26ntnag5ao" path="res://meshes/dirt-rock-small.gltf" id="12_a8ybd"]
 [ext_resource type="Texture2D" uid="uid://buiiktrf8ognq" path="res://meshes/dirt-slope-1_0.png" id="12_bs4tf"]
+[ext_resource type="PackedScene" uid="uid://gei4360o6s4s" path="res://meshes/stone.gltf" id="13_amhoc"]
 [ext_resource type="Texture2D" uid="uid://bxdkphp15cl2q" path="res://meshes/dirt-slope-1b_0.png" id="13_eipgm"]
+[ext_resource type="PackedScene" uid="uid://c2qq1ojnsyofv" path="res://meshes/grass.gltf" id="13_osull"]
+[ext_resource type="PackedScene" uid="uid://c2u1rciomk4v3" path="res://meshes/dirt-slope-2.gltf" id="14_djd0b"]
 [ext_resource type="Texture2D" uid="uid://ck0f4ce2x2xnn" path="res://meshes/dirt-slope-half_0.png" id="14_t4t6x"]
 [ext_resource type="Texture2D" uid="uid://s378rj21ekiy" path="res://meshes/dirt-slope-half-b_0.png" id="15_4vqkc"]
+[ext_resource type="PackedScene" uid="uid://droq6prup6lp7" path="res://meshes/dirt-slope-2b.gltf" id="15_xrfj6"]
+[ext_resource type="PackedScene" uid="uid://dnladpulatqpa" path="res://meshes/dirt-top-slope-2.gltf" id="16_bs4tf"]
 [ext_resource type="Texture2D" uid="uid://dpbb70lttj1kn" path="res://meshes/dirt-top-slope-half_0.png" id="16_xastv"]
+[ext_resource type="PackedScene" uid="uid://dkpdg5v22kxjn" path="res://meshes/entity-path-edge.gltf" id="17_xrfj6"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kihy3"]
 points = PackedVector3Array(0.5, 1, 0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5)
@@ -360,6 +369,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_aog43")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xrfj6"]
+points = PackedVector3Array(0.5, 2, 0.5, -0.5, 2, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bs4tf"]
+points = PackedVector3Array(0.5, 2, 0.5, 0.5, 2, -0.5, -0.5, 2, 0.5, 0.5, 0, 0.5, -0.5, 2, -0.5, -0.5, 0, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t4t6x"]
+points = PackedVector3Array(0.5, 1, 0.5, 0.5, 1, -0.5, -0.5, 1, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 1, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5)
+
 [node name="mesh_library" type="Node3D"]
 
 [node name="barrier" type="MeshInstance3D" parent="."]
@@ -460,3 +478,69 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="dirt-top-slope-half/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.5)
 shape = SubResource("ConvexPolygonShape3D_72vyu")
+
+[node name="bush" parent="." instance=ExtResource("10_amhoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+
+[node name="dirt-rock" parent="." instance=ExtResource("11_72vyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
+
+[node name="dirt-rock-small" parent="." instance=ExtResource("12_a8ybd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="dirt-rock-small/Node/dirt-rock-small" index="0"]
+
+[node name="CollisionShape3D" parent="dirt-rock-small/Node/dirt-rock-small/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_kihy3")
+
+[node name="stone" parent="." instance=ExtResource("13_amhoc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
+
+[node name="grass" parent="." instance=ExtResource("13_osull")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+
+[node name="dirt-slope-2" parent="." instance=ExtResource("14_djd0b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="dirt-slope-2/Node/dirt-slope-2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dirt-slope-2/Node/dirt-slope-2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_xrfj6")
+
+[node name="dirt-slope-2b" parent="." instance=ExtResource("15_xrfj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="dirt-slope-2b/Node/dirt-slope-2b" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dirt-slope-2b/Node/dirt-slope-2b/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("ConvexPolygonShape3D_bs4tf")
+
+[node name="dirt-top-slope-2" parent="." instance=ExtResource("16_bs4tf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="dirt-top-slope-2/Node/dirt-top-slope-2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dirt-top-slope-2/Node/dirt-top-slope-2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_xrfj6")
+
+[node name="entity-path-edge" parent="." instance=ExtResource("17_xrfj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="entity-path-edge/Node/entity-path-edge" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 2.25514e-17)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="entity-path-edge/Node/entity-path-edge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("ConvexPolygonShape3D_t4t6x")
+
+[editable path="bush"]
+[editable path="dirt-rock"]
+[editable path="dirt-rock-small"]
+[editable path="dirt-slope-2"]
+[editable path="dirt-slope-2b"]
+[editable path="dirt-top-slope-2"]
+[editable path="entity-path-edge"]
