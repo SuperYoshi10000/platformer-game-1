@@ -490,9 +490,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="dirt-rock-small/Node/dirt-rock-small" index="0"]
 
-[node name="CollisionShape3D" parent="dirt-rock-small/Node/dirt-rock-small/StaticBody3D" index="0"]
-shape = SubResource("ConvexPolygonShape3D_kihy3")
-
 [node name="stone" parent="." instance=ExtResource("13_amhoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
 
