@@ -32,8 +32,9 @@ const MIN_WALK_SPEED = 0.01
 const MIN_RUN_SPEED = 3.75
 const MIN_SPRINT_SPEED = 7.5
 const FLOOR_MAX_ANGLE = deg_to_rad(65)
+const SLIDE_NORMAL_MULTIPLIER = 0.5
 const SLIDE_SPEED = 1.0
-const DEBUG = true
+const DEBUG = false
 
 # *Jumping
 const SNEAK_JUMP_VELOCITY = 2.5
@@ -136,13 +137,13 @@ func set_appearance():
 		ANIMATION.current_animation = HIT
 		return
 	var speed: int = abs(velocity.x)
-	if slide_time > 0:
-		ANIMATION.current_animation = SLIDING
 	if death_time > 0:
 		if is_on_floor():
 			ANIMATION.current_animation = HIT
 		else:
 			pass
+	elif slide_time > 0:
+		ANIMATION.current_animation = SLIDING
 	elif is_on_floor():
 		if sprinting and speed > MIN_SPRINT_SPEED:
 			ANIMATION.current_animation = SPRINTING
@@ -255,7 +256,7 @@ func _physics_process(delta: float) -> void:
 			direction = 'r'
 		# Sliding
 		var normal = get_floor_normal()
-		if (abs(normal.y) < abs(normal.x) and velocity.y < 0) or (abs(normal.x) > 0 and sneaking):
+		if (abs(normal.y) < abs(normal.x) and velocity.y < 0) or (abs(normal.x) > abs(normal.y) * SLIDE_NORMAL_MULTIPLIER and sneaking):
 			normal.y = -normal.y
 			velocity += normal * SLIDE_SPEED
 			slide_time += 1
